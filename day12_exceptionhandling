@@ -1,0 +1,54 @@
+
+try:
+    
+    print(a)
+
+    s = int(input("enter data"))
+    print(s)
+    
+    a={1:'viyash',2:'vidyut',3:'ajay',4:'vishal'}
+    print(a[5])
+   
+    print(10/0)
+    
+except NameError as n:
+    print(n) 
+    
+except ValueError as v:
+    print(v)
+    
+except KeyError as k:
+    print(k)
+
+except Exception as e:
+    print(e)
+
+finally:
+    print(67890)
+
+
+x = 250
+assert x==20 , "x is not equal to 20"
+print(x)
+
+
+a=250
+if a==20:
+    print(a)
+else:
+    raise ValueError("Just an error")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
