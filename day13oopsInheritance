@@ -1,0 +1,116 @@
+#oops - object oriented programming structure / system
+#oops -> class and object
+#class -> blueprint -> has part (variables),-> does part (functions)
+#object -> real world entity
+'''
+class Details:
+    def personalDetails(self,name,age,dob,bg):
+        print(f"NAME        : {name}")
+        print(f"AGE         : {age}")
+        print(f"D.O.B       : {dob}")
+        print(f"BLOOD GROUP : {bg}")
+
+d = Details()
+d.personalDetails("Viyash",17,"30/05/2009","O+ve")
+d.personalDetails("Vishal",18,"25/06/2008","O+ve")
+d.personalDetails("Vidyut",17,"04/03/2009","O+ve")
+d.personalDetails("Gokulakshmi",17,"03/04/2009","O+ve")
+
+class Amazon:
+    def greet(self):
+        print("""===============================================
+             WELCOME TO AMAZON
+===============================================""")
+    def product(self):
+        products =["Wireless Earbuds","Smart Speaker","Streaming Stick","Hand Soap"
+           "Water Bottle","Air Fryer","Yoga Mat","Face Wash","Sunscreen",
+           "Lip Balm","Paper Towels","Batteries","Phone Case","USB Cable",
+           "Coffee Pods","Dog Bed","Backpack","Notebook","Printer Paper",]
+        for i in products:
+            print(i)
+    def accessories(self):
+        a=["Smartphone Cases and Covers","Screen Protectors","Charging Cables and Adapters",
+           "Wireless Earbuds and Headphones","Smartwatch Bands","Power Banks and Portable Chargers",
+           "Camera Lenses and Tripods","Laptop Sleeves and Bags","Bluetooth Speakers",
+           "Fitness Trackers","Tablet Stands and Mounts","Gaming Controllers and Headsets"]
+        for i in a:
+            print(i)
+am = Amazon()
+am.greet()
+print("""~~~~~~~~~~  MENU  ~~~~~~~~~~~""")
+print("1.Products\n2.Accessories")
+ch = int(input("Enter the choice :"))
+if ch==1:
+    am.product()
+elif ch==2:
+    am.accessories()
+
+'''
+#oops pillars
+#1.Inheritance -> reduces code size and reuse the class are already defined
+#2.Polymorphism-> Can do many works in single function
+#3.Abstraction -> Hiding the implementation and shows the mandatory
+#4.Encapsulation-> security purpose / hiding the important data
+
+#1.inheritance
+'''
+class car:
+    def hasPart(self):
+        haspart = ["Engine","Wheel","Radiator","Brake Pad", "Brake Caliper",
+                   "Steering Wheel", "Suspension","Fuel Tank","Fuel Pump",
+                   "Spark Plug", "Air Filter","Oil Filter", "Windshield",
+                   "Windshield Wiper","Headlight", "Taillight", "Side Mirror",
+                   "Rear-view Mirror", "Seat Belt", "Dashboard"]
+        for i in haspart:
+            print("::) ",i)
+
+    def doesPart(self):
+        print("Forward Moving")
+        print("Backward Moving")
+
+class KIA(car):
+    def additionalHasPart(self):
+        p = ["Kia OEM LED Headlight Assembly","Housing and Main Shell",
+             "Projector Lens and Reflector","Headlight Halogen/LED Bulb",
+             "Daytime Running Light (DRL) Module"]
+        for i in p:
+            print("::) ",i)
+
+    def additionalDoesPart(self):
+        print("ADAS -> Advanced Driver Assistance Systems")
+
+k = KIA()
+k.hasPart()
+k.doesPart()
+k.additionalHasPart()
+k.additionalDoesPart()
+
+#5 types -> inheritance
+#single inheritance
+#multiple inheritance
+#multi-level inheritance
+#hierarchical inheritance
+#hybrid inheritance
+
+#hierarchical inheritance
+class Animal:
+    def haspart(self):
+        print("Tail\n4Legs")
+    def doespart(self):
+        print("Hunting\n")
+class Dog(Animal):
+    def specialhaspart(self):
+        print("Sharp Teeth\n")
+    def specialdoespart(self):
+        print("Having more Smelling Sense")
+class cat(Animal):
+    def specialhaspart(self):
+        print("Night vision\n")
+    def specialdoespart(self):
+        print("bunting to tail twitches and hiding")
+'''
+
+
+
+
+
