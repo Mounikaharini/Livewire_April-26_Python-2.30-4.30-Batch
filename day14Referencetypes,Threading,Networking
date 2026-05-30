@@ -1,0 +1,132 @@
+'''
+#doc string
+"""This function greet"""
+
+def greet():
+    """This function greets the person passed as an argument."""
+
+    print("hi")
+ 
+greet()
+print(greet.__doc__)
+print(__doc__)
+
+#iterator
+l = ["1000","1001","1002"]
+x = iter(l)
+print(x)
+print(next(x))
+print(next(x))
+print(next(x))
+
+#generator
+def count_up_to(n):
+
+    """Yield numbers from 1 to n."""
+
+    i = 1
+
+    while i <= n:
+
+        yield i
+
+        i += 1
+
+print(count_up_to(5))
+l=count_up_to(5)
+for num in l:
+    print(num)
+
+
+#closure
+def make_multiplier(x):
+    def multiplier(n):
+        return x * n
+    return multiplier
+times3 = make_multiplier(3)
+print(times3(10))  # 30
+
+def fun1():
+    def fun2():
+        return "Function 2"
+    return fun2
+a=fun1()
+print(a())
+
+#Decorator
+
+def hi(y):
+    print("hi")
+    y()
+@hi
+def f1():
+    print("f1")
+
+#single thread
+import time
+def task():
+    for i in range(5):
+        time.sleep(1)
+        print(i)
+task()
+
+#multi-thread
+
+import threading
+
+import time
+def task1():
+    for i in range(6):
+        #time.sleep(1)
+        print("task 1 is running.......")
+
+
+def task2():
+    for i in range(6):
+        #time.sleep(2)
+        print("task 2 is running.......")
+
+t1 = threading.Thread(target=task1,daemon=True)
+t2 = threading.Thread(target=task2)
+
+t1.start()
+t2.start()
+t1.join()
+t2.join()
+print(t1.isDaemon())
+print(t2.isDaemon())
+'''
+Server side
+
+import socket
+s=socket.socket()
+print("Socket successfully created")
+port = 12345
+host=socket.gethostname()
+s.bind((host,port))
+print("Socket binded to",port)
+s.listen(5)
+print("Socket is listening")
+while True:
+    c,addr=s.accept()
+    print("Got connection from ",addr)
+    out="Thank you for Connecting"
+    #c.sendall(out.encode('utf-8'))
+    c.close()
+
+
+Client side
+
+import socket
+s=socket.socket()
+port=12345
+host=socket.gethostname()
+s.connect((host,port))
+print("The message received from server is ",s.recv(1024))
+s.close()
+
+
+
+
+
+
