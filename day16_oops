@@ -1,0 +1,61 @@
+'''
+#abstraction
+
+from abc import ABC, abstractmethod
+class foods(ABC):
+    
+    @abstractmethod
+    def veg():
+        pass
+    
+    @abstractmethod
+    def nonveg():
+        pass
+
+class star(foods):
+
+    def veg():
+        print("VEG RICE \nVEG PAROTA \nCHAPATHI \n")
+
+    def nonveg():
+        print("Chicken Rice \nChicken Briyani \nMutton Briyani \nNon-Veg meals")
+
+class atm:
+    
+    def __init__(self):
+        print("this is a constructor")
+        
+    def setter(self,name,pin):
+        self.name=name
+        self.__pin=pin
+        
+    def getter(self):
+        return self.name," ",self.__pin
+a = atm()
+a.setter("viyash",1236)
+print(a.getter())
+
+'''
+
+
+
+
+
+
+
+class tree:
+    def __init__(self):
+        self.name="viyash"
+        self.age=18
+        print(self.name)
+        print(self.age)
+
+class neemtree(tree):
+    def __init__(self,name,age):
+        super().__init__()
+        self.name=name
+        self.age=age
+        print(self.name)
+        print(self.age)
+        
+t = neemtree("vidyut",18)
