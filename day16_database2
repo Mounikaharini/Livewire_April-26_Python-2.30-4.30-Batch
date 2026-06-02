@@ -1,0 +1,21 @@
+import pymysql as p
+db = p.connect(
+    host="localhost",
+    user ="root",
+    password="1234",
+    database="CraveCone"
+    )
+print("connection create")
+c=db.cursor()
+'''
+query = "Insert into menu values('Coffee Mocha', 'Coffee-flavored ice cream with a hint of mocha.', 145)"
+'''
+#insert data get from user
+fn = input("Enter Food Name :")
+fd = input("Enter the Description:")
+fp = int(input("Enter the price :"))
+query = "insert into menu values('%s','%s','%d')"%(fn,fd,fp)
+c.execute(query)
+db.commit()
+print("Data inserted")
+db.close()
