@@ -1,0 +1,105 @@
+#create a database connection and create table
+import pymysql as p
+db = p.connect(
+    host="localhost",
+    user="root",
+    password="1234",
+    database="CraveCone"
+)
+c=db.cursor()
+print("connected to database")
+
+def createtable():
+    #table creation
+    query = "create table orderlist(Order_Name varchar(25),Order_Food varchar(25),Order_Id int,Order_Quantity int,Order_Payment_Method varchar(10))"
+
+    c.execute(query)
+    print("table created successfully")
+
+    db.close()
+    
+def insertdata1():
+
+    #insert data manually
+    try:  
+        query = 'insert into orderlist values("Praveen","Chicken Noodles",1,3,"UPI")'
+        c.execute(query)
+        print("data inserted successfully")
+        db.commit()
+    except Exception as e:
+        db.rollback()
+        print("Data Not Inserted")
+    db.close()
+
+def insertdata2():
+    #insert data get from user
+    oname = input("Enter Your Name :")
+    ofood = input("Enter the food Name :")
+    oid = int(input("Enter the order id :"))
+    oquan = int(input("Enter the food quantity :"))
+    opm = input("Enter the payment method (COD/UPI) :")
+
+    try:  
+        query = "insert into orderlist values('%s','%s','%d','%d','%s')"%(oname,ofood,oid,oquan,opm)
+        c.execute(query)
+        print("data inserted successfully")
+        db.commit()
+    except Exception as e:
+        db.rollback()
+        print("Data Not Inserted")
+        print(e)
+    db.close()
+
+def viewdata():
+    #view all data from the table
+    query = "select * from orderlist"
+    c.execute(query)
+    r=c.fetchall()
+    print("Results are :")
+    for row in r:
+        oname=row[0]
+        ofood=row[1]
+        oid=row[2]
+        oquan=row[3]
+        opm=row[4]
+
+        print(f"""
+    Order Name           : {oname} 
+    Order Food           : {ofood} 
+    Order Id             : {oid} 
+    Order Quantity       : {oquan} 
+    Order Payment Method : {opm}
+    """)
+
+def deletedata():
+    #delete a data
+    try:
+        sql="DELETE FROM ORDERLIST WHERE Order_Id = 2"
+        c.execute(sql)
+        db.commit()
+        print("Deleted")
+    except Exception as e:
+        print("Not Deleted")
+        db.rollback()
+        print(e)
+    db.close()
+
+def updatedata():
+    #update a data
+    sql = "UPDATE ORDERLIST SET Order_Id = 11 WHERE Order_Name='Praveen'"
+    try:
+        c.execute(sql)
+        db.commit()
+        print("Values are updated")
+    except Exception as e:
+        db.rollback()
+        print(e)
+        print("Not updated")
+    db.close()
+
+#createtable()
+#insertdata1()
+#insertdata2()
+#deletedata()
+#viewdata()
+#updatedata()
